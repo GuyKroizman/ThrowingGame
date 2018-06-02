@@ -10,11 +10,23 @@ public class Shooter : MonoBehaviour {
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            var clone = Instantiate(Projectile, transform.position, Quaternion.identity);
-
-            var audioSource = GetComponent<AudioSource>();
-            audioSource.Play();
-            
+            Throw();
         }
+
+        foreach (var touch in Input.touches)
+        {
+            if (touch.phase == TouchPhase.Began)
+            {
+                Throw();
+            }
+        }
+    }
+
+    void Throw()
+    {
+        var clone = Instantiate(Projectile, transform.position, Quaternion.identity);
+
+        var audioSource = GetComponent<AudioSource>();
+        audioSource.Play();
     }
 }
