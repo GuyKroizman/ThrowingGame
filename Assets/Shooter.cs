@@ -24,7 +24,8 @@ public class Shooter : MonoBehaviour {
 
     void Throw()
     {
-        var clone = Instantiate(Projectile, transform.position, Quaternion.identity);
+        float y = Random.Range(-0.5f, 0.5f);
+        var clone = Instantiate(Projectile, transform.position + new Vector3(0, y, 0), Quaternion.identity);
 
         var audioSource = GetComponent<AudioSource>();
         audioSource.Play();

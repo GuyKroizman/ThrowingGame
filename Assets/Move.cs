@@ -28,12 +28,27 @@ public class Move : MonoBehaviour {
 
         Moving = false;
 
+        if(!IsHitCrateFrontPanel(other))
+        {
+            Falling = true;
+            return;
+        }
+
         var audioSource = GetComponent<AudioSource>();
         audioSource.Play();
 
         destructible.AddStuckProjectile(this);
 
         destructible.TakeDamage(10);
+    }
+
+    private bool IsHitCrateFrontPanel(Collider other)
+    {
+        var otherCollider = other.GetComponent<Collider>();        
+
+        float crateFrontPanelZPosition = other.transform.position.z - otherCollider.bounds.size.z;
+
+        return transform.position.z - crateFrontPanelZPosition < 0.6;
     }
 
     internal void Unstuck()

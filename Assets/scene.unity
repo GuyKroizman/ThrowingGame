@@ -139,7 +139,7 @@ Camera:
   m_GameObject: {fileID: 840744110}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -192,8 +192,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 121.772705, y: 102.35167, z: 101.00458}
-  m_Center: {x: 0.09588623, y: 51.056816, z: -0.0934124}
+  m_Size: {x: 115.75402, y: 97.897766, z: 95.33085}
+  m_Center: {x: -0.26008487, y: 50.000538, z: 0.48675537}
 --- !u!114 &1141746416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,7 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DestroyVersion: {fileID: 1372993582574308, guid: c0dfaa85b3b063b498ae456802f56ef1,
     type: 2}
-  StartHealth: 50
+  StartHealth: 150
 --- !u!54 &1141746417
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 776edcd3496aa20488ba237e8602dc89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 2
+  Speed: 3
 --- !u!1 &1311119632
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,7 +353,8 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.02
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 28e4fee3fb4e47043b590a8fc3232df9, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: 28e4fee3fb4e47043b590a8fc3232df9, type: 3}
   m_IsPrefabParent: 0
 --- !u!1 &2065879393
