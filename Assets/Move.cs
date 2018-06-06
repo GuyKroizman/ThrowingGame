@@ -16,7 +16,18 @@ public class Move : MonoBehaviour {
         
         if(Falling)
             transform.position = transform.position + new Vector3(0, -1 * 3 * Time.deltaTime);
+
+        DestroyWhenTooFar();
 	}
+
+    private void DestroyWhenTooFar()
+    {
+        var distanceToCamera = Vector3.Distance(Camera.main.transform.position, transform.position);
+
+        if (distanceToCamera > 50)
+            Destroy(gameObject);
+
+    }
 
     private void OnTriggerEnter(Collider other)
     {
