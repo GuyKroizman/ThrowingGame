@@ -10,6 +10,9 @@ public class Destructible : MonoBehaviour {
     [SerializeField]
     private int StartHealth;
 
+    [SerializeField]
+    private Shooter Shooter;
+
     private int CurrentHealth;
 
     private List<Move> StuckProjectile = new List<Move>();
@@ -25,6 +28,11 @@ public class Destructible : MonoBehaviour {
 
         if(CurrentHealth <= 0)
         {
+            var clone = Instantiate(gameObject);
+            clone.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 70);
+
+            Shooter.MoveToNextTarget();
+
             Destruct();
         }
     }

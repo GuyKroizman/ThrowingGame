@@ -172,10 +172,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 840744110}
   m_LocalRotation: {x: 0.11563087, y: -0, z: -0, w: 0.99329233}
-  m_LocalPosition: {x: -0.67, y: 1.77, z: -3.13}
+  m_LocalPosition: {x: 0, y: 1.77, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2065879395}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 13.280001, y: 0, z: 0}
 --- !u!1 &1141746410 stripped
@@ -207,7 +207,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DestroyVersion: {fileID: 1372993582574308, guid: c0dfaa85b3b063b498ae456802f56ef1,
     type: 2}
-  StartHealth: 150
+  StartHealth: 40
+  Shooter: {fileID: 2065879394}
 --- !u!54 &1141746417
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -296,7 +297,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &1632320092
 Prefab:
@@ -315,7 +316,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 28e4fee3fb4e47043b590a8fc3232df9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.02
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 28e4fee3fb4e47043b590a8fc3232df9, type: 3}
       propertyPath: m_LocalRotation.x
@@ -335,7 +336,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 28e4fee3fb4e47043b590a8fc3232df9, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 28e4fee3fb4e47043b590a8fc3232df9, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -392,10 +393,11 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2065879393}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 840744115}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

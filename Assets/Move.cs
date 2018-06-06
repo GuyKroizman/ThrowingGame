@@ -12,7 +12,7 @@ public class Move : MonoBehaviour {
 
 	void Update () {
         if(Moving)
-            transform.position = transform.position + new Vector3(0,0, speed * Time.deltaTime);
+            transform.position = transform.position + new Vector3(0, 0, speed * Time.deltaTime);
         
         if(Falling)
             transform.position = transform.position + new Vector3(0, -1 * 3 * Time.deltaTime);
