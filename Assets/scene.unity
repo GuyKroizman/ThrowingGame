@@ -207,7 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DestroyVersion: {fileID: 1372993582574308, guid: c0dfaa85b3b063b498ae456802f56ef1,
     type: 2}
-  StartHealth: 40
+  StartHealth: 100
   Shooter: {fileID: 2065879394}
 --- !u!54 &1141746417
 Rigidbody:
@@ -235,7 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 776edcd3496aa20488ba237e8602dc89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 3
+  Speed: 3.5
 --- !u!1 &1311119632
 GameObject:
   m_ObjectHideFlags: 0
