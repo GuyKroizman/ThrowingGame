@@ -25,7 +25,7 @@ public class Shooter : MonoBehaviour
         if (CountDown <= 0)
         {
             AllowFire = true;
-            CountDown = 0.5f;
+            CountDown = 1f;
         }
 
         transform.position = Vector3.Lerp(transform.position, WannaBePosition, Time.deltaTime * 2);
