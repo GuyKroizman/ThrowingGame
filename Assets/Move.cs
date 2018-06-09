@@ -34,7 +34,7 @@ public class Move : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Spear trigger enter");        
+        Debug.Log("Spear trigger enter");
 
         var destructible = other.gameObject.GetComponent<Destructible>();
         if (destructible == null)
@@ -42,11 +42,13 @@ public class Move : MonoBehaviour {
 
         moving = false;
 
-        if(!IsHitCrateFrontPanel(other))
+        if (!IsHitCrateFrontPanel(other))
         {
             falling = true;
             return;
         }
+
+        ScoreManager.score += GetHitPoints(other.gameObject.transform.position.x);
 
         var audioSource = GetComponent<AudioSource>();
         audioSource.Play();
@@ -54,6 +56,15 @@ public class Move : MonoBehaviour {
         destructible.AddStuckProjectile(this);
 
         destructible.TakeDamage(10);
+    }
+
+    private static int GetHitPoints(float hitPosition)
+    {
+        float distanceFromCrateCenter = Mathf.Abs(hitPosition);
+        float normalizedDistance = Mathf.Min(distanceFromCrateCenter, 1);
+        float invertDistance = 1 - normalizedDistance;
+        int pointsForHit = (int)(10.0f * invertDistance) + 1;
+        return pointsForHit;
     }
 
     private bool IsHitCrateFrontPanel(Collider other)
