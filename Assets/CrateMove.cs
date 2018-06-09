@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class CrateMove : MonoBehaviour {
     
-    private float Direction = 1;
+    private float direction = 1;
 
     [SerializeField]
-    private float Speed;
+    private float speed;
 
 	void Start () {
 		
@@ -16,9 +16,9 @@ public class CrateMove : MonoBehaviour {
 	
 	void FixedUpdate () {
         if (transform.position.x > 5.5 || transform.position.x < -5.5)
-            Direction *= -1;
+            direction *= -1;
 
-        float f = Time.deltaTime * Direction * Speed;
+        float f = Time.deltaTime * direction * speed;
         transform.position = transform.position + new Vector3(f, 0, 0);
 	}
 }

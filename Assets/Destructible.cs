@@ -28,9 +28,6 @@ public class Destructible : MonoBehaviour {
 
         if(CurrentHealth <= 0)
         {
-            var clone = Instantiate(gameObject);
-            clone.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 70);
-
             Shooter.MoveToNextTarget();
 
             Destruct();
@@ -52,8 +49,12 @@ public class Destructible : MonoBehaviour {
 
         StuckProjectile.Clear();
 
-        Instantiate(DestroyVersion, transform.position, transform.rotation);
         transform.DetachChildren();
+        var clone = Instantiate(gameObject);
+        clone.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 70);
+
+        var crateParts = Instantiate(DestroyVersion, transform.position, transform.rotation);
+        Destroy(crateParts, 4);
         Destroy(gameObject);
     }
 
