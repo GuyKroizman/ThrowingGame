@@ -9,6 +9,7 @@ public class Shooter : MonoBehaviour
     private GameObject Projectile;
 
     private Vector3 WannaBePosition;
+
     private bool AllowFire = true;
     private float CountDown = 0.5f;
 
@@ -25,7 +26,7 @@ public class Shooter : MonoBehaviour
         if (CountDown <= 0)
         {
             AllowFire = true;
-            CountDown = 1f;
+            CountDown = 0.6f;
         }
 
         transform.position = Vector3.Lerp(transform.position, WannaBePosition, Time.deltaTime * 2);
@@ -80,6 +81,5 @@ public class Shooter : MonoBehaviour
     internal void MoveToNextTarget()
     {
         StartCoroutine(StartCountdown());
-
     }
 }

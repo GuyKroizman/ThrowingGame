@@ -1,20 +1,23 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Move : MonoBehaviour {
 
     public float speed;
 
-    private bool Moving = true;
-    private bool Falling = false;
+    private bool moving = true;
+    private bool falling = false;
+    private Vector3 initialPosition;
 
-	void Update () {
-        if(Moving)
+    private void Start()
+    {
+        initialPosition = transform.position;
+    }
+
+    void Update () {
+        if(moving)
             transform.position = transform.position + new Vector3(0, 0, speed * Time.deltaTime);
         
-        if(Falling)
+        if(falling)
             transform.position = transform.position + new Vector3(0, -1 * 3 * Time.deltaTime);
 
         DestroyWhenTooFar();
@@ -22,9 +25,9 @@ public class Move : MonoBehaviour {
 
     private void DestroyWhenTooFar()
     {
-        var distanceToCamera = Vector3.Distance(Camera.main.transform.position, transform.position);
+        var distance = Vector3.Distance(initialPosition, transform.position);
 
-        if (distanceToCamera > 50)
+        if (distance > 50)
             Destroy(gameObject);
 
     }
@@ -37,11 +40,11 @@ public class Move : MonoBehaviour {
         if (destructible == null)
             return;
 
-        Moving = false;
+        moving = false;
 
         if(!IsHitCrateFrontPanel(other))
         {
-            Falling = true;
+            falling = true;
             return;
         }
 
@@ -64,7 +67,7 @@ public class Move : MonoBehaviour {
 
     internal void Unstuck()
     {
-        Falling = true;
+        falling = true;
         Destroy(gameObject, 4);
     }
 }

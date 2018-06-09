@@ -45,7 +45,7 @@ public class Destructible : MonoBehaviour {
 
     private void Destruct()
     {
-        foreach(Move p in StuckProjectile)
+        foreach (Move p in StuckProjectile)
         {
             p.Unstuck();
         }
@@ -53,6 +53,7 @@ public class Destructible : MonoBehaviour {
         StuckProjectile.Clear();
 
         Instantiate(DestroyVersion, transform.position, transform.rotation);
+        transform.DetachChildren();
         Destroy(gameObject);
     }
 
