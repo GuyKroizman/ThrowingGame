@@ -488,7 +488,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1126, y: -25.3}
+  m_AnchoredPosition: {x: -140, y: -25.3}
   m_SizeDelta: {x: 232, y: 36}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1567264399
@@ -512,11 +512,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 26
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 40
+    m_MaxSize: 300
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -541,8 +541,8 @@ MonoBehaviour:
   m_Script: {fileID: 1573420865, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
-  m_EffectDistance: {x: 4.11, y: -2.39}
+  m_EffectColor: {r: 0.778, g: 0.77633667, b: 0.3621724, a: 0.5}
+  m_EffectDistance: {x: 3, y: -2}
   m_UseGraphicAlpha: 1
 --- !u!114 &1567264402
 MonoBehaviour:
