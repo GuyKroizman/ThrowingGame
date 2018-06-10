@@ -13,9 +13,12 @@ public class Shooter : MonoBehaviour
     private bool AllowFire = true;
     private float CountDown = 0.5f;
 
+    private Color destinationBackgroundColor;
+
     private void Start()
     {
         WannaBePosition = transform.position;
+        destinationBackgroundColor = UnityEngine.Random.ColorHSV();
     }
 
 
@@ -31,9 +34,11 @@ public class Shooter : MonoBehaviour
 
         transform.position = Vector3.Lerp(transform.position, WannaBePosition, Time.deltaTime * 2);
 
+        Camera.main.backgroundColor = Color.Lerp(Camera.main.backgroundColor, destinationBackgroundColor, Time.deltaTime * 1);
+
         if (Input.GetButtonDown("Fire1") && AllowFire)
         {
-            Throw();
+            Throw();             
         }
 
         if (IsTouchedScreen() && AllowFire)
@@ -55,7 +60,7 @@ public class Shooter : MonoBehaviour
         return false;
     }
 
-    public IEnumerator StartCountdown()
+    private IEnumerator StartCountdown()
     {
         int currCountdownValue = 1;
         while (currCountdownValue > 0)
@@ -80,6 +85,7 @@ public class Shooter : MonoBehaviour
 
     internal void MoveToNextTarget()
     {
+        destinationBackgroundColor = UnityEngine.Random.ColorHSV();
         StartCoroutine(StartCountdown());
     }
 }
