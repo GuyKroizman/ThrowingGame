@@ -48,7 +48,7 @@ public class Move : MonoBehaviour {
             return;
         }
 
-        ScoreManager.score += GetHitPoints(other.gameObject.transform.position.x);
+        GameScore.score += GetHitPoints(other.gameObject.transform.position.x);
 
         var audioSource = GetComponent<AudioSource>();
         audioSource.Play();

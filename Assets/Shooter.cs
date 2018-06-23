@@ -65,7 +65,7 @@ public class Shooter : MonoBehaviour
         int currCountdownValue = 1;
         while (currCountdownValue > 0)
         {
-            yield return new WaitForSeconds(0.50f);
+            yield return new WaitForSeconds(0.30f);
             currCountdownValue--;
         }
 

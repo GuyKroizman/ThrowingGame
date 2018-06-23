@@ -1,24 +1,34 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CrateMove : MonoBehaviour {
-    
-    private float direction = 1;
 
-    [SerializeField]
-    private float speed;
+    private int movementMethod;
 
-	void Start () {
-		
-	}
-	
-	
-	void FixedUpdate () {
-        if (transform.position.x > 5.5 || transform.position.x < -5.5)
-            direction *= -1;
+    ContinuousRandomDestinationAndSpeed continuousRandomDestination;
 
-        float f = Time.deltaTime * direction * speed;
-        transform.position = transform.position + new Vector3(f, 0, 0);
-	}
+    const float RANGE = 5.5f;
+
+    private void Start()
+    {
+        movementMethod = Random.Range(0, 2);
+
+        continuousRandomDestination = new ContinuousRandomDestinationAndSpeed(RANGE);
+    }
+    void FixedUpdate () {
+        if (movementMethod == 0)
+            transform.position = GetPosition();
+        if (movementMethod == 1)
+            transform.position = continuousRandomDestination.GetPosition(transform.position);
+    }
+
+    private Vector3 GetPosition()
+    {              
+        const float SPEED = 300;
+
+        float f = Time.time * Time.deltaTime * SPEED;
+        float x = Mathf.PingPong(f, 2*RANGE) - RANGE;
+        return new Vector3(x, transform.position.y, transform.position.z);
+    }
+
+
 }
