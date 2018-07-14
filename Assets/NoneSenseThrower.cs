@@ -18,7 +18,8 @@ public class NoneSenseThrower : MonoBehaviour {
             var position = new Vector3(Random.Range(-6, 6), -2, transform.position.z + 3);
             var thingy = Instantiate(thingsToThrow[indexOfThingToThrow], position, Random.rotation);
 
-            var thingyRigidBody = thingy.GetComponent<Rigidbody>();
+            // get the rigid body from children because we have a wrapper to change the model pivot
+            var thingyRigidBody = thingy.GetComponentInChildren<Rigidbody>();
             float direction = 1;
             if (position.x < 0)
                 direction = -1;
