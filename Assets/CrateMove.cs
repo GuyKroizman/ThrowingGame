@@ -4,7 +4,7 @@ public class CrateMove : MonoBehaviour {
 
     private int movementMethod;
 
-    ContinuousRandomDestinationAndSpeed continuousRandomDestination;
+    ContinuousRandomSpeed continuousRandomDestination;
 
     const float RANGE = 5.5f;
 
@@ -12,7 +12,7 @@ public class CrateMove : MonoBehaviour {
     {
         movementMethod = Random.Range(0, 2);
 
-        continuousRandomDestination = new ContinuousRandomDestinationAndSpeed(RANGE);
+        continuousRandomDestination = new ContinuousRandomSpeed(RANGE);
     }
     void FixedUpdate () {
         if (movementMethod == 0)

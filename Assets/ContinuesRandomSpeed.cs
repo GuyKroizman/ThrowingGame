@@ -1,22 +1,26 @@
 ﻿using UnityEngine;
 
-internal class ContinuousRandomDestinationAndSpeed
+internal class ContinuousRandomSpeed
 {
     private readonly float RANGE;
     private float currentDestination;
     private float currentSpeed;
 
-    public ContinuousRandomDestinationAndSpeed(float RANGE)
+    public ContinuousRandomSpeed(float RANGE)
     {
         this.RANGE = RANGE;
 
-        GetNewRandomDestinationAndSpeed();
+        currentDestination = RANGE;
+        UpdateRandomSpeed();
     }
 
     public Vector3 GetPosition(Vector3 currentPosition)
     {
         if (IsCloseToDestination(currentPosition.x))
-            GetNewRandomDestinationAndSpeed();
+        {
+            currentDestination = currentDestination *= -1;
+            UpdateRandomSpeed();
+        }
 
         float step = Time.deltaTime * currentSpeed;        
 
@@ -34,9 +38,8 @@ internal class ContinuousRandomDestinationAndSpeed
         return Mathf.Abs(currentPositionX - currentDestination) < 0.1;
     }
 
-    private void GetNewRandomDestinationAndSpeed()
-    {
-        currentDestination = Random.Range(-1 * RANGE, RANGE);
-        currentSpeed = Random.Range(3, 10);
+    private void UpdateRandomSpeed()
+    {        
+        currentSpeed = Random.Range(3, 12);
     }
 }
