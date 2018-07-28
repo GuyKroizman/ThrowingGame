@@ -12,13 +12,22 @@ public class Move : MonoBehaviour {
     {
         initialPosition = transform.position;
     }
+    // return how much to decrease the y position (height), based on the current y position.
+    private float DropEasing()
+    {
+        float abs = Mathf.Abs(transform.position.y);
+        float minabs = Mathf.Max(1, abs);        
+        
+        float drop = minabs * 2f * Time.deltaTime;
+        return -1 * drop;
+    }
 
     void Update () {
         if(moving)
-            transform.position = transform.position + new Vector3(0, 0, speed * Time.deltaTime);
+            transform.position = transform.position + new Vector3(0, DropEasing( ), speed * Time.deltaTime);
         
         if(falling)
-            transform.position = transform.position + new Vector3(0, -1 * 3 * Time.deltaTime);
+            transform.position = transform.position + new Vector3(0, -1 * 10 * Time.deltaTime, 0);
 
         DestroyWhenTooFar();
 	}
