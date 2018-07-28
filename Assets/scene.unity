@@ -2038,6 +2038,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Projectile: {fileID: 1161079284951604, guid: 5a9278a8c9b9f5d459d5fcd0bd3d4277, type: 2}
+  MinTimeBetweenThrowsSeconds: 0.5
 --- !u!4 &2065879395
 Transform:
   m_ObjectHideFlags: 0

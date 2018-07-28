@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class Shooter : MonoBehaviour
@@ -8,10 +7,15 @@ public class Shooter : MonoBehaviour
     [SerializeField]
     private GameObject Projectile;
 
+    // This is updated once the player breaks a crate to the next crate position
     private Vector3 WannaBePosition;
 
+    // A variable to help keep fire rate at normal speed.
+    // It will be set to false after a throw for about half a second.
     private bool AllowFire = true;
-    private float CountDown = 0.5f;
+    private float CountDown;
+    public float MinTimeBetweenThrowsSeconds = 0.5f;
+    
 
     private void Start()
     {
@@ -19,17 +23,11 @@ public class Shooter : MonoBehaviour
     }
 
 
-
     void Update()
     {
-        CountDown -= Time.deltaTime;
-        if (CountDown <= 0)
-        {
-            AllowFire = true;
-            CountDown = 0.6f;
-        }
+        UpdateAllowFire();
 
-        transform.position = Vector3.Lerp(transform.position, WannaBePosition, Time.deltaTime * 2);
+        UpdatePlayerPosition();
 
         if (Input.GetButtonDown("Fire1") && AllowFire)
         {
@@ -40,6 +38,21 @@ public class Shooter : MonoBehaviour
         {
             Throw();
         }
+    }
+
+    private void UpdateAllowFire()
+    {
+        CountDown -= Time.deltaTime;
+        if (CountDown <= 0)
+        {
+            AllowFire = true;
+            CountDown = MinTimeBetweenThrowsSeconds;
+        }
+    }
+
+    private void UpdatePlayerPosition()
+    {
+        transform.position = Vector3.Lerp(transform.position, WannaBePosition, Time.deltaTime * 2);
     }
 
     private bool IsTouchedScreen()
@@ -57,6 +70,8 @@ public class Shooter : MonoBehaviour
 
     private IEnumerator StartCountdown()
     {
+        // a little delay before moving the player to the next position. 
+        // so the player can see the crates break.
         int currCountdownValue = 1;
         while (currCountdownValue > 0)
         {
@@ -64,13 +79,14 @@ public class Shooter : MonoBehaviour
             currCountdownValue--;
         }
 
+        // Set position to start move to. The update will move this until we reach WannaBePosition.
         WannaBePosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 70);
     }
 
-    void Throw()
+    private void Throw()
     {
         AllowFire = false;
-        float y = UnityEngine.Random.Range(-0.5f, 0.5f);
+        float y = Random.Range(-0.5f, 0.5f);
 
         Instantiate(Projectile, transform.position + new Vector3(0, y, 0), Quaternion.identity);
 
@@ -78,6 +94,7 @@ public class Shooter : MonoBehaviour
         audioSource.Play();
     }
 
+    // gets called when the crate is destructed.
     internal void MoveToNextTarget()
     {
         StartCoroutine(StartCountdown());
