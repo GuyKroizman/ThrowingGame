@@ -4,6 +4,9 @@ public class Move : MonoBehaviour {
 
     public float speed;
 
+    private AudioSource audioSource;
+    public AudioEvent CrateImpact;
+
     private bool moving = true;
     private bool falling = false;
     private Vector3 initialPosition;
@@ -11,6 +14,7 @@ public class Move : MonoBehaviour {
     private void Start()
     {
         initialPosition = transform.position;
+        audioSource = GetComponent<AudioSource>();
     }
     // return how much to decrease the y position (height), based on the current y position.
     private float DropEasing()
@@ -59,8 +63,7 @@ public class Move : MonoBehaviour {
 
         GameScore.score += GetHitPoints(other.gameObject.transform.position.x);
 
-        var audioSource = GetComponent<AudioSource>();
-        audioSource.Play();
+        CrateImpact.Play(audioSource);
 
         destructible.AddStuckProjectile(this);
 
