@@ -14,11 +14,15 @@ public class Shooter : MonoBehaviour
     // It will be set to false after a throw for about half a second.
     private bool AllowFire = true;
     public float MinTimeBetweenThrowsSeconds = 5f;
+
+    private AudioSource audioSource;
     
 
     private void Start()
     {
         WannaBePosition = transform.position;
+
+        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -87,7 +91,6 @@ public class Shooter : MonoBehaviour
 
         Instantiate(Projectile, transform.position + new Vector3(0, y, 0), Quaternion.identity);
 
-        var audioSource = GetComponent<AudioSource>();
         audioSource.Play();
     }
 
