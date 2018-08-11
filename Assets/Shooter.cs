@@ -13,8 +13,7 @@ public class Shooter : MonoBehaviour
     // A variable to help keep fire rate at normal speed.
     // It will be set to false after a throw for about half a second.
     private bool AllowFire = true;
-    private float CountDown;
-    public float MinTimeBetweenThrowsSeconds = 0.5f;
+    public float MinTimeBetweenThrowsSeconds = 5f;
     
 
     private void Start()
@@ -25,8 +24,6 @@ public class Shooter : MonoBehaviour
 
     void Update()
     {
-        UpdateAllowFire();
-
         UpdatePlayerPosition();
 
         if (Input.GetButtonDown("Fire1") && AllowFire)
@@ -40,15 +37,7 @@ public class Shooter : MonoBehaviour
         }
     }
 
-    private void UpdateAllowFire()
-    {
-        CountDown -= Time.deltaTime;
-        if (CountDown <= 0)
-        {
-            AllowFire = true;
-            CountDown = MinTimeBetweenThrowsSeconds;
-        }
-    }
+
 
     private void UpdatePlayerPosition()
     {
@@ -83,9 +72,17 @@ public class Shooter : MonoBehaviour
         WannaBePosition = new Vector3(transform.position.x, transform.position.y, transform.position.z + 70);
     }
 
+    private IEnumerator WaitAlittleBeforeAllowFire()
+    {
+        yield return new WaitForSeconds(MinTimeBetweenThrowsSeconds);
+        AllowFire = true;
+    }
+
     private void Throw()
     {
         AllowFire = false;
+        StartCoroutine(WaitAlittleBeforeAllowFire());
+
         float y = Random.Range(-0.5f, 0.5f);
 
         Instantiate(Projectile, transform.position + new Vector3(0, y, 0), Quaternion.identity);
