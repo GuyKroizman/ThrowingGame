@@ -18,7 +18,7 @@ internal class ContinuousRandomSpeed
     {
         if (IsCloseToDestination(currentPosition.x))
         {
-            currentDestination = currentDestination *= -1;
+            currentDestination *= -1;
             UpdateRandomSpeed();
         }
 
