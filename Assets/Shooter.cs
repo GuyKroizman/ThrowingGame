@@ -4,8 +4,8 @@ using UnityEngine;
 public class Shooter : MonoBehaviour
 {
 
-    [SerializeField]
-    private GameObject Projectile;
+    public Move spearPrefab;
+    private Move spear;
 
     // This is updated once the player breaks a crate to the next crate position
     private Vector3 WannaBePosition;
@@ -30,15 +30,32 @@ public class Shooter : MonoBehaviour
     {
         UpdatePlayerPosition();
 
-        if (Input.GetButtonDown("Fire1") && AllowFire)
-        {
-            Throw();             
-        }
+        
 
-        if (IsTouchedScreen() && AllowFire)
+        if(AllowFire)
         {
-            Throw();
+            if (Input.GetButtonDown("Fire1"))
+            {
+                InstantiateSpear();
+                return;
+            }
+
+            if (Input.GetButtonUp("Fire1"))
+            {
+                Throw();
+            }
+
+            if (IsTouchedBegun())
+            {
+                InstantiateSpear();
+            }
+
+            if(IsTouchedEnded())
+            {
+                Throw();
+            }
         }
+        
     }
 
 
@@ -48,11 +65,24 @@ public class Shooter : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, WannaBePosition, Time.deltaTime * 2);
     }
 
-    private bool IsTouchedScreen()
+    private bool IsTouchedBegun()
     {
         foreach (var touch in Input.touches)
         {
             if (touch.phase == TouchPhase.Began)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private bool IsTouchedEnded()
+    {
+        foreach (var touch in Input.touches)
+        {
+            if (touch.phase == TouchPhase.Ended)
             {
                 return true;
             }
@@ -82,16 +112,24 @@ public class Shooter : MonoBehaviour
         AllowFire = true;
     }
 
-    private void Throw()
+    private void InstantiateSpear()
     {
-        AllowFire = false;
-        StartCoroutine(WaitAlittleBeforeAllowFire());
+        
 
         float y = Random.Range(-0.5f, 0.5f);
 
-        Instantiate(Projectile, transform.position + new Vector3(0, y, 0), Quaternion.identity);
+        spear = Instantiate(spearPrefab, transform.position + new Vector3(0, y, 0), Quaternion.identity);
 
         audioSource.Play();
+    }
+
+    private void Throw()
+    {
+        AllowFire = false;
+
+        StartCoroutine(WaitAlittleBeforeAllowFire());
+
+        spear.StartMoving();    
     }
 
     // gets called when the crate is destructed.

@@ -7,7 +7,7 @@ public class Move : MonoBehaviour {
     private AudioSource audioSource;
     public AudioEvent CrateImpact;
 
-    private bool moving = true;
+    private bool moving = false;
     private bool falling = false;
     private Vector3 initialPosition;
 
@@ -92,5 +92,10 @@ public class Move : MonoBehaviour {
     {
         falling = true;
         Destroy(gameObject, 4);
+    }
+
+    public void StartMoving()
+    {
+        moving = true;
     }
 }
