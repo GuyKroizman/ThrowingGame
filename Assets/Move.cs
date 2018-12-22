@@ -11,10 +11,16 @@ public class Move : MonoBehaviour {
     private bool falling = false;
     private Vector3 initialPosition;
 
+    private SpearPowerChargeEffects spearPowerChargeEffects;
+
     private void Start()
     {
         initialPosition = transform.position;
         audioSource = GetComponent<AudioSource>();
+
+        spearPowerChargeEffects = new SpearPowerChargeEffects(gameObject);
+
+        spearPowerChargeEffects.StartEffects();
     }
     // return how much to decrease the y position (height), based on the current y position.
     private float DropEasing()
@@ -32,6 +38,8 @@ public class Move : MonoBehaviour {
         
         if(falling)
             transform.position = transform.position + new Vector3(0, -1 * 10 * Time.deltaTime, 0);
+
+        spearPowerChargeEffects.Update();
 
         DestroyWhenTooFar();
 	}
@@ -96,6 +104,7 @@ public class Move : MonoBehaviour {
 
     public void StartMoving()
     {
+        spearPowerChargeEffects.StopEffects();
         moving = true;
     }
 }

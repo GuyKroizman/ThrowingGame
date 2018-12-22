@@ -274,7 +274,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.4
+  m_Time: 0.28
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -282,8 +282,8 @@ TrailRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.85
-        value: 0.074071616
+        time: 0.24947739
+        value: 0.0703125
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -326,7 +326,7 @@ TrailRenderer:
     numCapVertices: 0
     alignment: 0
     textureMode: 0
-    shadowBias: 0.5
+    shadowBias: 3.61
     generateLightingData: 0
   m_MinVertexDistance: 0.91
   m_Autodestruct: 0
@@ -348,7 +348,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9193259544693136650
 Transform:
   m_ObjectHideFlags: 0
