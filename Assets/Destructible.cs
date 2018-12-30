@@ -58,14 +58,4 @@ public class Destructible : MonoBehaviour {
         Destroy(gameObject);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("on trigger");
-
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("On collision !!!");
-    }
 }

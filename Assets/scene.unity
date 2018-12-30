@@ -1286,7 +1286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DestroyVersion: {fileID: 1372993582574308, guid: c0dfaa85b3b063b498ae456802f56ef1,
     type: 3}
-  StartHealth: 60
+  StartHealth: 320
   Shooter: {fileID: 2065879394}
 --- !u!54 &1141746417
 Rigidbody:

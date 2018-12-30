@@ -45,4 +45,10 @@ internal class SpearPowerChargeEffects
     {
         isThisThingOn = true;
     }
+
+    public int GetPower()
+    {
+        int Power = (int)timeSinceStart + 1;
+        return Power * 10;
+    }
 }

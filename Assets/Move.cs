@@ -54,9 +54,7 @@ public class Move : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log("Spear trigger enter");
-
+    {        
         var destructible = other.gameObject.GetComponent<Destructible>();
         if (destructible == null)
             return;
@@ -69,13 +67,15 @@ public class Move : MonoBehaviour {
             return;
         }
 
-        GameScore.score += GetHitPoints(other.gameObject.transform.position.x);
+        int hitPoints = GetHitPoints(other.gameObject.transform.position.x) * spearPowerChargeEffects.GetPower();
+        Debug.Log("Spear hit points " + hitPoints);
+        GameScore.score += hitPoints;
 
         CrateImpact.Play(audioSource);
 
         destructible.AddStuckProjectile(this);
 
-        destructible.TakeDamage(10);
+        destructible.TakeDamage(hitPoints);
     }
 
     private static int GetHitPoints(float hitPosition)
