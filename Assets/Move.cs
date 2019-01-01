@@ -68,7 +68,7 @@ public class Move : MonoBehaviour {
         }
 
         int hitPoints = GetHitPoints(other.gameObject.transform.position.x) * spearPowerChargeEffects.GetPower();
-        Debug.Log("Spear hit points " + hitPoints);
+        
         GameScore.score += hitPoints;
 
         CrateImpact.Play(audioSource);
@@ -99,6 +99,7 @@ public class Move : MonoBehaviour {
     internal void Unstuck()
     {
         falling = true;
+
         Destroy(gameObject, 4);
     }
 

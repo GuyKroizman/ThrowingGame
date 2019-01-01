@@ -5,10 +5,14 @@ public class NoneSenseThrower : MonoBehaviour {
 
     public GameObject[] thingsToThrow;
 
+    [SerializeField]
+    private float InitialDelayBeforeFirstThrow=10;
+    [SerializeField]
+    private float DelayBetweenThrowning = 4;
     private float throwCountDownCounter;
 
 	void Start () {
-        throwCountDownCounter = 2;
+        throwCountDownCounter = InitialDelayBeforeFirstThrow;
     }
 	
 	void Update () {
@@ -29,7 +33,7 @@ public class NoneSenseThrower : MonoBehaviour {
 
             Destroy(thingy, 8);
 
-            throwCountDownCounter = 1;
+            throwCountDownCounter = DelayBetweenThrowning;
         }
         throwCountDownCounter -= Time.deltaTime;
 

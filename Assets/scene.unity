@@ -147,6 +147,8 @@ MonoBehaviour:
   - {fileID: 1642145878010932, guid: d716279fd636e604e82975cb71e65df8, type: 3}
   - {fileID: 1875796121416558, guid: 265cc25fce16e574fac58e362c770826, type: 3}
   - {fileID: 1825358964788842, guid: f636c909500538241a64e82122c0fbb0, type: 3}
+  InitialDelayBeforeFirstThrow: 10
+  DelayBetweenThrowning: 4
 --- !u!4 &20618060
 Transform:
   m_ObjectHideFlags: 0

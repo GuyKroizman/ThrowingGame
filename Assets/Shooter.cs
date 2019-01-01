@@ -30,17 +30,17 @@ public class Shooter : MonoBehaviour
     {
         UpdatePlayerPosition();
 
-        
 
-        if(AllowFire)
+
+        if (AllowFire)
         {
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Fire1") || Input.GetKeyDown("space"))
             {
                 InstantiateSpear();
                 return;
             }
 
-            if (Input.GetButtonUp("Fire1"))
+            if (Input.GetButtonUp("Fire1") || Input.GetKeyUp("space"))
             {
                 Throw();
             }
