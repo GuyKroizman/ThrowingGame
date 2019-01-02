@@ -3,15 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Destructible : MonoBehaviour {
+public class Destructible : MonoBehaviour
+{
 
     public GameObject DestroyVersion;
 
     [SerializeField]
-    private int StartHealth;
+    private int StartHealth = 320;
 
     [SerializeField]
-    private Shooter Shooter;
+    private Shooter Shooter = null;
 
     private int CurrentHealth;
 
@@ -26,7 +27,7 @@ public class Destructible : MonoBehaviour {
     {
         CurrentHealth -= amount;
 
-        if(CurrentHealth <= 0)
+        if (CurrentHealth <= 0)
         {
             Shooter.MoveToNextTarget();
 
@@ -44,7 +45,8 @@ public class Destructible : MonoBehaviour {
     {
         foreach (Move p in StuckProjectile)
         {
-            p.Unstuck();
+            if (p != null)
+                p.Unstuck();
         }
 
         StuckProjectile.Clear();
