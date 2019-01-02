@@ -120,7 +120,6 @@ public class Shooter : MonoBehaviour
 
         spear = Instantiate(spearPrefab, transform.position + new Vector3(0, y, 0), Quaternion.identity);
 
-        audioSource.Play();
     }
 
     private void Throw()
@@ -130,6 +129,8 @@ public class Shooter : MonoBehaviour
         StartCoroutine(WaitAlittleBeforeAllowFire());
 
         spear.StartMoving();    
+
+        audioSource.Play();
     }
 
     // gets called when the crate is destructed.
